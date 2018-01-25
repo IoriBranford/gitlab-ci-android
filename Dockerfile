@@ -1,17 +1,21 @@
 #
 # GitLab CI: Android v0.2
 #
+# https://hub.docker.com/r/ioribranford/gitlab-ci-android/
+#
+# Forked from:
 # https://hub.docker.com/r/jangrewe/gitlab-ci-android/
 # https://git.faked.org/jan/gitlab-ci-android
 #
 
-FROM ubuntu:17.04
-MAINTAINER Jan Grewe <jan@faked.org>
+FROM ubuntu:16.04
+MAINTAINER IoriBranford <ioribranford@gmail.com>
 
 ENV VERSION_SDK_TOOLS "3859397"
 
 ENV ANDROID_HOME "/sdk"
-ENV PATH "$PATH:${ANDROID_HOME}/tools"
+ENV ANDROID_NDK_HOME "${ANDROID_HOME}/ndk-bundle"
+ENV PATH "$PATH:${ANDROID_HOME}/tools:${ANDROID_NDK_HOME}"
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get -qq update && \
